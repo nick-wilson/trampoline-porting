@@ -1,0 +1,5 @@
+gprint,cpu=1
+basis=vdz
+geometry={He}
+hf
+ccsd
