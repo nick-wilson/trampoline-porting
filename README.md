@@ -23,7 +23,7 @@ Add to PATH and compile application as normal:
 ```
 export PATH="$prefix/bin:$PATH"
 ```
-To change the compiler used by MPItrampoline wrappers
+Optionally you can change the compiler used by MPItrampoline wrappers using environment variables:
 ```
 export MPITRAMPOLINE_CC=gcc
 export MPITRAMPOLINE_CXX=g++
