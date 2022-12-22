@@ -1,0 +1,4 @@
+MPIwrapper
+*.out
+*.xml
+slurm-*.?

@@ -8,6 +8,7 @@ General build instructions
 * Run application
 
 The ```docker``` directory has scripts used to build and run in CentOS 7 docker environment with GCC11.
+The ```hawk``` directory has scripts used to build on Hawk with GCC11.
 
 ## Building MPItrampoline
 ```
