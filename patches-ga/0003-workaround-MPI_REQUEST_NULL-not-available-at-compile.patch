@@ -1,0 +1,28 @@
+From 2fd652c766fc442bf75995d55ca7b8736e580c5b Mon Sep 17 00:00:00 2001
+From: Nick Wilson <12475993+nick-wilson@users.noreply.github.com>
+Date: Thu, 8 Dec 2022 15:59:12 +0000
+Subject: [PATCH 3/4] workaround MPI_REQUEST_NULL not available at compile time
+
+---
+ comex/src-armci/message.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/comex/src-armci/message.c b/comex/src-armci/message.c
+index f1ffcb82..2334adda 100644
+--- a/comex/src-armci/message.c
++++ b/comex/src-armci/message.c
+@@ -348,7 +348,11 @@ void armci_msg_brdcst(void* buffer, int len, int root)
+ 
+ 
+ /* there was a case in ghost update where a proc sent a message to itself */
++#ifdef MPI_REQUEST_NULL
+ static MPI_Request self_request = MPI_REQUEST_NULL;
++#else
++static MPI_Request self_request;
++#endif
+ static int self_request_flag = 0;
+ 
+ void armci_msg_snd(int tag, void* buffer, int len, int to)
+-- 
+2.34.1
+

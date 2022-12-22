@@ -1,0 +1,68 @@
+From 68f005c4ba7418c3e320904b60213bd52653ff6d Mon Sep 17 00:00:00 2001
+From: Nick Wilson <12475993+nick-wilson@users.noreply.github.com>
+Date: Mon, 19 Dec 2022 15:54:23 +0000
+Subject: [PATCH 2/2] updated configure for MPItrampoline
+
+---
+ configure | 45 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
+
+diff --git a/configure b/configure
+index 8a7e1c8bd4..b1016b98fd 100755
+--- a/configure
++++ b/configure
+@@ -9810,6 +9810,51 @@ printf "%s\n" "no" >&6; }
+ fi
+ rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+ 
++fi
++
++
++if test -z "${CXX_MPI_VENDOR}"; then
++
++{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking MPI flavour is MPItrampoline" >&5
++printf %s "checking MPI flavour is MPItrampoline... " >&6; }
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++#include <mpi.h>
++#ifdef FC_DUMMY_MAIN
++#ifndef FC_DUMMY_MAIN_EQ_F77
++#  ifdef __cplusplus
++     extern "C"
++#  endif
++   int FC_DUMMY_MAIN() { return 1; }
++#endif
++#endif
++int
++main (void)
++{
++#if defined(MPITRAMPOLINE_VERSION)
++ int myargc;
++ char **myargv;
++ MPI_Init(&myargc, &myargv);
++ MPI_Finalize();
++#else
++ fail_to_compile
++#endif
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_cxx_try_compile "$LINENO"
++then :
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++printf "%s\n" "yes" >&6; }
++CXX_MPI_VENDOR="mpitrampoline"
++else $as_nop
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
++printf "%s\n" "no" >&6; }
++
++fi
++rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
++
+ fi
+ 
+  test -z "${CXX_MPI_VENDOR}" && { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: unable to determine C++ MPI vendor" >&5
+-- 
+2.34.1
+

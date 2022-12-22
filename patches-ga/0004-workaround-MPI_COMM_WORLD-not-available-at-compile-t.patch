@@ -1,0 +1,38 @@
+From 6ea9364ea2518b453ed9293e0297e9e0c973bfb3 Mon Sep 17 00:00:00 2001
+From: Nick Wilson <12475993+nick-wilson@users.noreply.github.com>
+Date: Thu, 8 Dec 2022 15:59:35 +0000
+Subject: [PATCH 4/4] workaround MPI_COMM_WORLD not available at compile time
+
+---
+ tcgmsg/tcgmsg-mpi/misc.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/tcgmsg/tcgmsg-mpi/misc.c b/tcgmsg/tcgmsg-mpi/misc.c
+index 91f1c48c..64bba4e9 100644
+--- a/tcgmsg/tcgmsg-mpi/misc.c
++++ b/tcgmsg/tcgmsg-mpi/misc.c
+@@ -11,7 +11,11 @@ extern void exit(int status);
+ #include "armci.h"
+ 
+ char     tcgmsg_err_string[ERR_STR_LEN];
++#ifdef MPI_COMM_WORLD
+ MPI_Comm TCGMSG_Comm=MPI_COMM_WORLD;
++#else
++MPI_Comm TCGMSG_Comm;
++#endif
+ int      _tcg_initialized=0;
+ long  DEBUG_;
+ int      SR_parallel; 
+@@ -142,6 +146,9 @@ void tcgi_alt_pbegin(int *argc, char **argv[])
+ #else
+         MPI_Init(argc, argv);
+ #endif
++#ifndef MPI_COMM_WORLD
++        TCGMSG_Comm=MPI_COMM_WORLD;
++#endif
+ #if defined(MPI_VERSION) && (MPI_VERSION >= 2)
+         MPI_Comm_set_errhandler(TCGMSG_Comm, MPI_ERRORS_RETURN);
+ #else
+-- 
+2.34.1
+
