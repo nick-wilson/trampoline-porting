@@ -13,22 +13,23 @@ module load git
 module load cmake/3.25.0
 module load compiler/gnu/11/3.0
 module load mkl/2020/4
-export SCWMPI=trampoline
-
+module load mpi/intel/2020/4
 
 _armci=mpi-pr
+_suffix=""
 
-working_directory=/scratch/$USER/install-Molpro-$molpro_version-$SCWCOMPILER-$SCWMPI-$_armci # careful! if this directory already exists it will be completely destroyed first
+working_directory=/scratch/$USER/install-Molpro-$molpro_version-$SCWCOMPILER-$SCWMPI-${_armci}${_suffix} # careful! if this directory already exists it will be completely destroyed first
 
 #prefix=/apps/local/chemistry/molpro/$molpro_version/$SCWOS/$SCWCPU/$SCWCOMPILER/$SCWMPI # where to install to (system)
 #prefix=/home/scwc0005/software/molpro/release # where to install to
 #prefix=/scratch/$USER/software/molpro/release # where to install to
 #prefix=$HOME/software/molpro/release # where to install to (user)
-prefix=$HOME/software/molpro/$molpro_version/$SCWOS/$SCWCPU/$SCWCOMPILER/$SCWMPI/$_armci
+prefix=$HOME/software/molpro/$molpro_version/$SCWOS/$SCWCPU/$SCWCOMPILER/$SCWMPI/${_armci}${_suffix}
 eigen_version=3.3.7
 #module load eigen/$eigen_version
-ga_version=trampoline
-make_processes=8
+ga_version="release/5.8"
+ga_repository="GlobalArrays"
+make_processes=2
 # end configuration - shouldn't need to change below here
 
 thisdir="$PWD" # directory where scripts are located
@@ -38,16 +39,16 @@ if [ x$GITPATH != x ]; then export PATH=$GITPATH:$PATH; fi
 rm -fr $working_directory && mkdir -p $working_directory && cd $working_directory || exit 1
 mkdir -p ${prefix}/bin || exit 1
 
-git clone git@github.com:eschnett/MPItrampoline.git
-cd MPItrampoline
-build=cmake-build
-cmake -S . -B $build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$working_directory
-cmake --build $build
-cmake --install $build
-export PATH="$working_directory/bin:$PATH"
-cd $working_directory
 
-git clone https://github.com/nick-wilson/ga || exit 1
+
+
+
+
+
+
+
+
+git clone https://github.com/"$ga_repository"/ga || exit 1
 cd ga || exit 1
 git checkout $ga_version || exit 1
 #for patch in "$thisdir"/ga-*.patch ; do if [ -f "$patch" ] ; then echo apply patch $patch ; git apply $patch ; fi ; done
