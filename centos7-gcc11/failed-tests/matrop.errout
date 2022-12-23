@@ -1,0 +1,555 @@
+
+ Working directory              : /tmp/molpro.8NovBSjg46/
+ Global scratch directory       : /tmp/molpro.8NovBSjg46/
+ Wavefunction directory         : /root/wfu/
+ Main file repository           : /tmp/molpro.8NovBSjg46/
+
+ id        : cardiff
+
+ Nodes          nprocs
+ buildkitsandbox    3
+ Distribution of processes:   nprocs(total)=    4   nprocs(compute)=    3   nprocs(helper)=    1
+ GA implementation: MPI file
+ GA implementation (serial work in mppx): MPI file
+
+ Using customized tuning parameters: mindgm=1; mindgv=20; mindgc=4; mindgr=1; noblas=0; minvec=7
+ default implementation of scratch files=sf  
+
+
+ Variables initialized (1028), CPU time= 0.00 sec
+ ***,Test for matrop
+ 
+ geomtyp=xyz
+ 
+ orient,mass
+ geometry={
+    2
+ N2
+ N1,-0.160764952519E+01, 0.531259204459E+00, 0.000000000000E+00
+ N2,-0.189235047481E+01,-0.531259204459E+00, 0.000000000000E+00
+ }
+ 
+ {hf;wf,14}
+ e(1)=energy
+ 
+ {matrop
+ load,orb,orbitals,2100.2                                                        !load orbitals
+ density,den,orb,3,1,1,0,2                                                       !make closed-shell density
+ fock,fao,den                                                                    !make fock operator
+ load,hao,h0                                                                     !load one-electron hamiltonian
+ add,h1,hao,fao                                                                  !form h1=f+h
+ trace,e2,h1,den,0.5                                                             !compute electronic energy, store in variable e2
+ tran,fmo,fao,orb                                                                !transform f into the MO basis
+ diag,eigvec,eigval,fmo                                                          !diagonalize
+ mult,orbnew,orb,eigvec                                                          !transform orbitals
+ density,dnew,orbnew,3,1,1,0,2                                                   !form new density
+ write,orbnew,orb.matrop,new                                                     !write new orbitals to file orb.matrop
+ fock,fnew,dnew                                                                  !make fock operator
+ add,h1,hao,fnew                                                                 !add to h
+ trace,e3,h1,dnew,0.5}                                                           !new energy
+ e(2)=e2+enuc                                                                    !total energies
+ e(3)=e3+enuc
+ 
+ {matrop,read,orb,type=orbitals,file=orb.matrop                                  !read orbitals from file orb.matrop
+ save,orb,2101.2}                                                                !save orbitals in record 2101.2
+ 
+ {hf;start,2101.2;wf, 14;maxit,1}                                                !start hf with orbitals from matrop
+ e(4)=energy
+ 
+ Commands initialized (840), CPU time= 0.01 sec, 684 directives.
+ Default parameters read. Elapsed time= 0.06 sec
+
+ Checking input...
+ Passed
+1
+
+
+                                         ***  PROGRAM SYSTEM MOLPRO  ***
+                                       Copyright, TTI GmbH Stuttgart, 2015
+                                    Version 2022.4 linked Fri Dec 23 11:22:17 2022
+
+
+ **********************************************************************************************************************************
+ LABEL *   Test fp                                                                       
+  64 bit mpp version                                                                     DATE: 23-Dec-22          TIME: 11:34:07  
+ **********************************************************************************************************************************
+
+ SHA1:             7e44cf2f6be76d642bd6abc86082413581aa3b85
+ **********************************************************************************************************************************
+
+ Memory per process:        32 MW
+ Total memory per node:     96 MW
+
+ GA preallocation disabled
+ GA check disabled
+ SETTING GEOMTYP        =    XYZ
+
+ Variable memory set to 32.0 MW
+
+ ZCENTRE=MASS
+
+
+
+ Recomputing integrals since basis changed
+
+
+ Using spherical harmonics
+
+ Library entry N      S cc-pVDZ              selected for orbital group  1
+ Library entry N      P cc-pVDZ              selected for orbital group  1
+ Library entry N      D cc-pVDZ              selected for orbital group  1
+
+
+ PROGRAM * SEWARD (Integral evaluation for generally contracted gaussian basis sets)     Author: Roland Lindh, 1990
+
+ Geometry written to block  1 of record 700
+
+ Orientation using atomic masses  
+ Molecule type: Linear
+ Symmetry elements: X,Y,Z
+ Rotational constants:      59.6384006     59.6384006      0.0000000 GHz  (calculated with average atomic masses)
+
+ Point group  D2h 
+
+
+
+ ATOMIC COORDINATES
+
+ NR  ATOM    CHARGE       X              Y              Z
+
+   1  N1      7.00    0.000000000    0.000000000    1.039349369
+   2  N2      7.00    0.000000000    0.000000000   -1.039349369
+
+ Bond lengths in Bohr (Angstrom)
+
+ 1-2  2.078698737
+     ( 1.100000000)
+
+ NUCLEAR CHARGE:                   14
+ NUMBER OF PRIMITIVE AOS:          54
+ NUMBER OF SYMMETRY AOS:           52
+ NUMBER OF CONTRACTIONS:           28   (    7Ag  +    3B3u +    3B2u +    1B1g +    7B1u +    3B2g +    3B3g +    1Au  )
+ NUMBER OF INNER CORE ORBITALS:     0   (    0Ag  +    0B3u +    0B2u +    0B1g +    0B1u +    0B2g +    0B3g +    0Au  )
+ NUMBER OF OUTER CORE ORBITALS:     2   (    1Ag  +    0B3u +    0B2u +    0B1g +    1B1u +    0B2g +    0B3g +    0Au  )
+ NUMBER OF VALENCE ORBITALS:        8   (    2Ag  +    1B3u +    1B2u +    0B1g +    2B1u +    1B2g +    1B3g +    0Au  )
+
+
+ NUCLEAR REPULSION ENERGY   23.57243939
+
+ EXTRA SYMMETRY OF AOS IN SYMMETRY 1:   1 1 1 1 1 1 2
+ EXTRA SYMMETRY OF AOS IN SYMMETRY 5:   1 1 1 1 1 1 2
+
+ Eigenvalues of metric
+
+         1 0.363E-01 0.144E+00 0.951E+00 0.113E+01 0.117E+01 0.135E+01 0.373E+01
+         2 0.201E+00 0.134E+01 0.286E+01
+         3 0.201E+00 0.134E+01 0.286E+01
+         4 0.117E+01
+         5 0.499E-02 0.625E-01 0.120E+00 0.829E+00 0.936E+00 0.109E+01 0.244E+01
+         6 0.127E+00 0.328E+00 0.114E+01
+         7 0.127E+00 0.328E+00 0.114E+01
+         8 0.829E+00
+
+
+ Contracted 2-electron integrals neglected if value below      1.0D-11
+ AO integral compression algorithm  1   Integral accuracy      1.0D-11
+
+     0.786 MB (compressed) written to integral file (100.0%)
+
+     Node minimum: 0.262 MB, node maximum: 0.262 MB
+
+
+ NUMBER OF SORTED TWO-ELECTRON INTEGRALS:       4215.     BUFFER LENGTH:  32768
+ NUMBER OF SEGMENTS:   1  SEGMENT LENGTH:       4215      RECORD LENGTH: 524288
+
+ Memory used in sort:       0.56 MW
+
+ SORT1 READ       27440. AND WROTE        3813. INTEGRALS IN      1 RECORDS. CPU TIME:     0.01 SEC, REAL TIME:     0.00 SEC
+ SORT2 READ       11779. AND WROTE       13015. INTEGRALS IN      3 RECORDS. CPU TIME:     0.00 SEC, REAL TIME:     0.01 SEC
+
+ Node minimum:        4141.  Node maximum:        4659. integrals
+
+ OPERATOR DM      FOR CENTER  0  COORDINATES:    0.000000    0.000000    0.000000
+
+
+ **********************************************************************************************************************************
+ DATASETS  * FILE   NREC   LENGTH (MB)   RECORD NAMES
+              1      18       28.58       500      610      700      900      950      970     1000      129      960     1100   
+                                          VAR    BASINP    GEOM    SYMINP    ZMAT    AOBASIS   BASIS     P2S    ABASIS      S 
+                                         1400     1410     1200     1210     1080     1600     1650     1700   
+                                           T        V       H0       H01     AOSYM     SMH    MOLCAS    OPER   
+
+ PROGRAMS   *        TOTAL       INT
+ CPU TIMES  *         0.21      0.10
+ REAL TIME  *         0.30 SEC
+ DISK USED  *        28.85 MB (local),       98.68 MB (total)
+ GA USED    *         0.00 MB       (max)       0.00 MB       (current)
+ **********************************************************************************************************************************
+
+
+ Program * Restricted Hartree-Fock
+
+ Orbital guess generated from atomic densities.
+
+ Initial occupancy:   3   1   1   0   2   0   0   0
+
+ NELEC=   14   SYM=1   MS2= 0   THRE=1.0D-08   THRD=3.2D-06   THRG=3.2D-06  HFMA2=F  DIIS_START=2   DIIS_MAX=10   DIIS_INCORE=F
+
+ Level shifts:    0.00 (CLOSED)    0.00 (OPEN)    0.30 (GAP_MIN)
+
+ ITER           ETOT              DE          GRAD        DDIFF     DIIS  NEXP   TIME(IT)  TIME(TOT)  DIAG
+   1     -108.94264669    -108.94264669     0.00D+00     0.55D+00     0     0       0.00      0.00    start
+   2     -108.95315874      -0.01051205     0.21D-01     0.35D-01     1     0       0.00      0.00    diag
+   3     -108.95375375      -0.00059501     0.46D-02     0.95D-02     2     0       0.00      0.00    diag
+   4     -108.95379585      -0.00004209     0.11D-02     0.25D-02     3     0       0.00      0.00    diag
+   5     -108.95379623      -0.00000039     0.11D-03     0.26D-03     4     0       0.00      0.00    diag
+   6     -108.95379624      -0.00000001     0.14D-04     0.39D-04     5     0       0.00      0.00    diag
+   7     -108.95379624      -0.00000000     0.17D-05     0.62D-05     6     0       0.00      0.00    diag
+   8     -108.95379624      -0.00000000     0.17D-06     0.66D-06     7     0       0.00      0.00    fixocc
+   9     -108.95379624       0.00000000     0.74D-08     0.26D-07     0     0       0.00      0.00    diag
+
+ Final occupancy:   3   1   1   0   2   0   0   0
+
+ !RHF STATE 1.1 Energy               -108.953796240694
+  RHF One-electron energy            -194.141068871994
+  RHF Two-electron energy              61.614833236570
+  RHF Kinetic energy                  108.699772893759
+  RHF Nuclear energy                   23.572439394729
+  RHF Virial quotient                  -1.002336926197
+
+ !RHF STATE 1.1 Dipole moment           0.00000000     0.00000000     0.00000000
+ Dipole moment /Debye                   0.00000000     0.00000000     0.00000000
+
+ Orbital energies:
+
+           1.1          2.1          3.1          4.1          5.1
+    -15.687167    -1.469497    -0.626026     0.820946     0.991969
+
+           1.2          2.2          3.2
+     -0.607175     0.872872     1.879691
+
+           1.3          2.3          3.3
+     -0.607175     0.872872     1.879691
+
+           1.4
+      1.758149
+
+           1.5          2.5          3.5          4.5
+    -15.683810    -0.774851     0.593893     1.140849
+
+           1.6          2.6
+      0.174428     1.050510
+
+           1.7          2.7
+      0.174428     1.050510
+
+           1.8
+      2.297394
+
+
+ HOMO      1.3    -0.607175 =     -16.5221eV
+ LUMO      1.6     0.174428 =       4.7464eV
+ LUMO-HOMO         0.781603 =      21.2685eV
+
+ Orbitals saved in record  2100.2
+
+
+ **********************************************************************************************************************************
+ DATASETS  * FILE   NREC   LENGTH (MB)   RECORD NAMES
+              1      18       28.58       500      610      700      900      950      970     1000      129      960     1100   
+                                          VAR    BASINP    GEOM    SYMINP    ZMAT    AOBASIS   BASIS     P2S    ABASIS      S 
+                                         1400     1410     1200     1210     1080     1600     1650     1700   
+                                           T        V       H0       H01     AOSYM     SMH    MOLCAS    OPER   
+
+              2       4        0.37       700     1000      520     2100   
+                                         GEOM     BASIS   MCVARS     RHF  
+
+ PROGRAMS   *        TOTAL    HF-SCF       INT
+ CPU TIMES  *         0.22      0.01      0.10
+ REAL TIME  *         0.31 SEC
+ DISK USED  *        28.99 MB (local),       99.11 MB (total)
+ GA USED    *         0.00 MB       (max)       0.00 MB       (current)
+ **********************************************************************************************************************************
+ SETTING E(1)           =      -108.95379624  AU                              
+
+
+ PROGRAM * MATROP
+
+
+ Orbitals ORB read from record           2100.2  Type=RHF/CANONICAL  
+
+ Closed-shell density matrix DEN made from orbitals ORB for occupation   3   1   1   0   2   0   0   0
+
+ Closed-shell fock matrix FAO made using density DEN
+
+ Operator H0 loaded to HAO
+
+ H1 = HAO + FAO
+
+ E2 = 0.5 tr[H1*DEN] = -132.52623564
+
+ FMO = ORB` FAO ORB
+
+ Matrix FMO diagonalized with eigenvectors EIGVEC and eigenvalues EIGVAL
+
+ ORBNEW = ORB * EIGVEC
+
+ Closed-shell density matrix DNEW made from orbitals ORBNEW for occupation   3   1   1   0   2   0   0   0
+
+ Matrix ORBNEW written to file orb.matrop                      
+
+ Closed-shell fock matrix FNEW made using density DNEW
+
+ H1 = HAO + FNEW
+
+ E3 = 0.5 tr[H1*DNEW] = -132.52623564
+
+
+ **********************************************************************************************************************************
+ DATASETS  * FILE   NREC   LENGTH (MB)   RECORD NAMES
+              1      18       28.58       500      610      700      900      950      970     1000      129      960     1100   
+                                          VAR    BASINP    GEOM    SYMINP    ZMAT    AOBASIS   BASIS     P2S    ABASIS      S 
+                                         1400     1410     1200     1210     1080     1600     1650     1700   
+                                           T        V       H0       H01     AOSYM     SMH    MOLCAS    OPER   
+
+              2       4        0.37       700     1000      520     2100   
+                                         GEOM     BASIS   MCVARS     RHF  
+
+ PROGRAMS   *        TOTAL    MATROP    HF-SCF       INT
+ CPU TIMES  *         0.22      0.00      0.01      0.10
+ REAL TIME  *         0.31 SEC
+ DISK USED  *        28.99 MB (local),       99.11 MB (total)
+ GA USED    *         0.00 MB       (max)       0.00 MB       (current)
+ **********************************************************************************************************************************
+ SETTING E(2)           =      -108.95379624  AU                              
+ SETTING E(3)           =      -108.95379624  AU                              
+
+
+ PROGRAM * MATROP
+
+
+ READING MATRIX ORB (ORBITALS) FROM FILE orb.matrop. SYMMETRY=1
+
+  Orbitals ORB saved in record 2101.2 (set 1)
+
+
+ **********************************************************************************************************************************
+ DATASETS  * FILE   NREC   LENGTH (MB)   RECORD NAMES
+              1      18       28.58       500      610      700      900      950      970     1000      129      960     1100   
+                                          VAR    BASINP    GEOM    SYMINP    ZMAT    AOBASIS   BASIS     P2S    ABASIS      S 
+                                         1400     1410     1200     1210     1080     1600     1650     1700   
+                                           T        V       H0       H01     AOSYM     SMH    MOLCAS    OPER   
+
+              2       5        0.46       700     1000      520     2100     2101   
+                                         GEOM     BASIS   MCVARS     RHF    MATROP    
+
+ PROGRAMS   *        TOTAL    MATROP    MATROP    HF-SCF       INT
+ CPU TIMES  *         0.23      0.00      0.00      0.01      0.10
+ REAL TIME  *         0.32 SEC
+ DISK USED  *        29.08 MB (local),       99.37 MB (total)
+ GA USED    *         0.00 MB       (max)       0.00 MB       (current)
+ **********************************************************************************************************************************
+
+
+ Program * Restricted Hartree-Fock
+
+ Molecular orbitals read from record     2101.2  Type=MATROP/MATROP  
+
+ Initial occupancy:   2   1   1   0   2   1   0   0
+
+ NELEC=   14   SYM=1   MS2= 0   THRE=1.0D-08   THRD=3.2D-06   THRG=3.2D-06  HFMA2=F  DIIS_START=2   DIIS_MAX=10   DIIS_INCORE=F
+
+ Level shifts:    0.00 (CLOSED)    0.00 (OPEN)    0.30 (GAP_MIN)
+
+ ITER           ETOT              DE          GRAD        DDIFF     DIIS  NEXP   TIME(IT)  TIME(TOT)  DIAG
+   1     -108.16314602    -108.16314602     0.00D+00     0.55D+00     0     0       0.00      0.00    blockdiag
+   2     -108.16314602       0.00000000     0.37D-01     0.86D-14     0     0       0.00      0.00    blockdiag
+
+ Orbitals not optimized (maxit=1)
+
+ Final occupancy:   2   1   1   0   2   1   0   0
+
+ !RHF STATE 1.1 Energy               -108.163146022538
+  RHF One-electron energy            -192.296089240217
+  RHF Two-electron energy              60.560503822950
+  RHF Kinetic energy                  108.192268617136
+  RHF Nuclear energy                   23.572439394729
+  RHF Virial quotient                  -0.999730825548
+
+ !RHF STATE 1.1 Dipole moment           0.00000000     0.00000000     0.00000000
+ Dipole moment /Debye                   0.00000000     0.00000000     0.00000000
+
+ Orbital energies:
+
+           1.1          2.1          3.1          4.1
+    -15.836136    -1.509144    -0.265508     0.805934
+
+           1.2          2.2          3.2
+     -0.713409     0.847238     1.805245
+
+           1.3          2.3          3.3
+     -0.661142     0.831763     1.807858
+
+           1.4
+      1.725341
+
+           1.5          2.5          3.5          4.5
+    -15.834327    -0.761100     0.540568     1.085168
+
+           1.6          2.6          3.6
+     -0.272283     0.966006     2.924686
+
+           1.7          2.7
+      0.114231     0.988590
+
+           1.8
+      2.244784
+
+
+ HOMO      1.6    -0.272283 =      -7.4092eV
+ LUMO      3.1    -0.265508 =      -7.2248eV
+ LUMO-HOMO         0.006774 =       0.1843eV
+
+ Orbitals saved in record  2101.2
+
+
+ **********************************************************************************************************************************
+ DATASETS  * FILE   NREC   LENGTH (MB)   RECORD NAMES
+              1      18       28.58       500      610      700      900      950      970     1000      129      960     1100   
+                                          VAR    BASINP    GEOM    SYMINP    ZMAT    AOBASIS   BASIS     P2S    ABASIS      S 
+                                         1400     1410     1200     1210     1080     1600     1650     1700   
+                                           T        V       H0       H01     AOSYM     SMH    MOLCAS    OPER   
+
+              2       5        0.47       700     1000      520     2100     2101   
+                                         GEOM     BASIS   MCVARS     RHF      RHF  
+
+ PROGRAMS   *        TOTAL    HF-SCF    MATROP    MATROP    HF-SCF       INT
+ CPU TIMES  *         0.23      0.00      0.00      0.00      0.01      0.10
+ REAL TIME  *         0.32 SEC
+ DISK USED  *        29.08 MB (local),       99.38 MB (total)
+ GA USED    *         0.00 MB       (max)       0.00 MB       (current)
+ **********************************************************************************************************************************
+ SETTING E(4)           =      -108.16314602  AU                              
+
+ HF/cc-pVDZ energy=   -108.163146022538
+
+          HF-SCF          HF-SCF
+   -108.16314602   -108.95379624
+ **********************************************************************************************************************************
+ Molpro calculation terminated
+ ***,Test for matrop read
+ 
+ orient,mass
+ geometry={
+    2
+ N2
+ N1,-
+ geomtyp=xyz
+ orient,mass
+ geometry={
+    2
+ N2
+ N1,-0.160764952519E+01, 0.531259204459E+00, 0.000000000000E+00
+ N2,-0.189235047481E+01,-0.531259204459E+00, 0.000000000000E+00
+ }
+ 
+ {matrop
+ read,orb,orbitals
+ Including file /work/Molpro/testjobs/orb.matrop
+ save,orb,2102.2}
+ 
+ {hf,debug=1,gap_min=0;start,2102.2;wf, 14;occ,3,1,1,,2;maxit,1}
+ e(1)=energy
+ eold=[-108.95379625]
+ de=max(abs(e-eold))
+ 
+ if(de.lt.1.d-8) then
+ text,No errors for matrop.test
+ else
+ text,ERRORS detected in matrop.test
+ end if
+
+  1 UNCLOSED CURLY BRACKETS STARTING AT LINE(S):   3
+     1       ***,'Test for matrop read',
+     2       ORIENT,MASS,
+     3       GEOMETRY,
+     4       2,
+     5       N2,
+     6       N1,-,
+     7       GEOMTYP=XYZ,
+     8
+     9       ORIENT,MASS,
+    10       GEOMETRY,
+    11       2,
+    12       N2,
+    13       N1,-0.160764952519E+01,0.531259204459E+00,0.000000000000E+00,
+    14       N2,-0.189235047481E+01,-0.531259204459E+00,0.000000000000E+00,
+    15       ENDGEOM,
+    16       BEGINMATROP,
+    17       READ,ORB,ORBITALS,
+    18       BEGIN_DATA,
+    19       #,MATRIX,ORBNEW,SYMMETRY=1,
+    20       0.99972737,-0.01196889,-0.01620272,0.22246113,-0.60380677,
+    21       0.00000000,-0.54459993,
+    22       0.00106452,0.94192874,0.27106054,0.84842161,-2.92831171,
+    23       0.00000000,-2.04751440,
+    24       -0.00002081,-0.26995738,0.30996171,-0.49372070,3.01386445,
+    25       -0.00000000,1.64782233,
+    26       -0.00285438,-0.45341983,0.94808799,-0.96245060,-0.55990119,
+    27       0.00000000,0.76547384,
+    28       0.00213958,0.15812119,-0.13620952,1.78043667,0.51517113,
+    29       0.00000000,-1.12922734,
+    30       0.00055682,0.04030442,-0.03532520,0.10194691,-0.09027695,
+    31       0.00000000,1.17849425,
+    32       -0.00000000,-0.00000000,0.00000000,-0.00000000,-0.00000000,
+    33       0.92404016,-0.00000000,
+    34       0.88953743,-1.34187504,0.60173840,
+    35       -0.04708816,1.49701758,-0.37497012,
+    36       -0.06714417,0.14618071,0.84197995,
+    37       0.88953743,-1.34187504,0.60173840,
+    38       -0.04708816,1.49701758,-0.37497012,
+    39       -0.06714417,0.14618071,0.84197995,
+    40       0.92404016,
+    41       1.00125037,0.00502206,0.04353800,0.20209796,-0.91562574,
+    42       0.00000000,0.24763771,
+    43       0.00462970,0.92408772,-0.47634698,0.62544197,-4.05684556,
+    44       0.00000000,1.33202059,
+    45       -0.00629133,0.06192232,-5.26015364,-1.22831700,10.92324348,
+    46       -0.00000000,3.77914326,
+    47       -0.00490455,0.44969278,0.13034713,1.57879418,0.26594437,
+    48       0.00000000,-2.22482884,
+    49       0.00421904,-0.04691654,3.64881970,-1.02031344,-3.97918652,
+    50       0.00000000,-1.28187049,
+    51       0.00170500,-0.01895367,-0.07549118,0.32510742,0.30387154,
+    52       -0.00000000,1.69706020,
+    53       -0.00000000,-0.00000000,-0.00000000,0.00000000,0.00000000,
+    54       1.09841414,-0.00000000,
+    55       0.89324400,-1.52860509,-0.50103097,
+    56       0.54233844,2.34116278,-0.42215014,
+    57       0.01835730,-0.09600179,1.55731982,
+    58       0.89324400,-1.52860509,-0.50103097,
+    59       0.54233844,2.34116278,-0.42215014,
+    60       0.01835730,-0.09600179,1.55731982,
+    61       1.09841414,
+    62       END_DATA,
+    63       SAVE,ORB,2102.2,
+    64       ENDMATR,
+    65       BEGINHF-SCF000,DEBUG=1,GAP_MIN=0,
+    66       START,2102.2,
+    67       WF,14,
+    68       OCC,3,1,1,,2,
+    69       MAXIT,1,
+    70       ENDHF,
+    71       E(1)=ENERGY,
+    72       EOLD=[-108.95379625],
+    73       DE=MAX(ABS(E-EOLD)),
+    74       IF001,(DE.LT.1.D-8),THEN,
+    75       TEXT,'No errors for matrop.test',
+    76       ELSE001,
+    77       TEXT,'ERRORS detected in matrop.test',
+    78       ENDIF001,
+    79       ---,
+ Input error
+
+ GLOBAL ERROR Input error on processor   0                                    
+matrop.test: ERRORS DETECTED: non-zero return code ... inspect output

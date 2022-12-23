@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<molpro xmlns="http://www.molpro.net/schema/molpro-output"
+  xmlns:xsd="http://www.w3.org/1999/XMLSchema"
+  xmlns:cml="http://www.xml-cml.org/schema"
+  xmlns:stm="http://www.xml-cml.org/schema"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+ <job>
+  <stm:metadataList>
+   <stm:metadata name="dc:date" content="2022-12-23T11:32:29+00:00"/>
+   <stm:metadata name="cmlm:insilico" content="Molpro"/>
+  </stm:metadataList>
+  <platform pid="621">
+   <version major="2022" minor="4" SHA="7e44cf2f6be76d642bd6abc86082413581aa3b85"
+     integer_bits="64" parallelism="mpp">
+    2022.4
+    <date year="2022" month="12" day="23" hour="11" minute="32" second="29">
+     2022-12-23T11:32:29
+    </date>
+   </version>
+   <licence id="cardiff"/>
+   <parallel processes="3" nodes="1" all_processes="3" openmp="1"/>
+   <dimensions natom="400" nvalence="500" nvalence_pno="1000" nbasis="12000" nstate="100"
+     nsymm="16" nrec="512" nprim="2" ncol="100"/>
+  </platform>
+  <jobstep command="FILE" commandset="FILE">
+   <time start="11:32:29" end="11:32:29" cpu="0.1" system="0.01" real="0.12"/>
+   <storage units="megabyte" memory="0.17" sf="0.0" df="0.25" eaf="0.0"/>
+   <summary overall_method="FILE/cc-pVDZ"/>
+  </jobstep>
+  <jobstep command="HF-SCF" commandset="SCFPRO">
+   <cml:molecule>
+    <cml:symmetry pointGroup="C2v">
+     <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+     </cml:transform3>
+     <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+     </cml:transform3>
+    </cml:symmetry>
+    <cml:atomArray>
+     <cml:atom id="a1" elementType="H" x3="0.0" y3="-0.753174847500924" z3="0.527380535908791"/>
+     <cml:atom id="a2" elementType="O" x3="0.0" y3="0.0" z3="-0.664484839886379E-01"/>
+     <cml:atom id="a3" elementType="H" x3="0.0" y3="0.753174847500924" z3="0.527380535908791"/>
+    </cml:atomArray>
+    <cml:bondArray>
+     <cml:bond atomRefs2="a1 a3"/>
+     <cml:bond atomRefs2="a2 a3"/>
+    </cml:bondArray>
+   </cml:molecule>
+   <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+     value="-76.0266940901565"/>
+   <property name="One-electron energy" method="RHF" value="-123.1196046301"/>
+   <property name="Two-electron energy" method="RHF" value="37.9138721718446"/>
+   <property name="Kinetic energy" method="RHF" value="75.9830649901225"/>
+   <property name="Nuclear energy" method="RHF" value="9.17903836809896"/>
+   <property name="Virial quotient" method="RHF" value="-1.00057419505306"/>
+   <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+     stateNumber="1" value="0.0 0.0 0.815809721365177"/>
+   <time start="11:32:29" end="11:32:30" cpu="0.12" system="0.07" real="0.19"/>
+   <storage units="megabyte" memory="244.14" sf="0.0" df="121.45" eaf="12.1" ga="0.0"/>
+   <summary overall_method="HF/cc-pVDZ"/>
+  </jobstep>
+  <input>
+   <p>***,</p>
+   <p>file,2,h2o2.wfu,new</p>
+   <p>symmetry,x,y;geometry={</p>
+   <p>h</p>
+   <p>o,h,r</p>
+   <p>h,o,r,h,theta</p>
+   <p>}</p>
+   <p>r=1.81246829               !optimize mp2/VTZ geometry</p>
+   <p>theta=103.49307128</p>
+   <p>basis=vdz</p>
+   <p>ii=0</p>
+   <p>hf</p>
+   <p>ii=ii+1,pointgroup(ii)=pgroup,e(ii)=energy,group(ii)='C2v'</p>
+  </input>
+  <diagnostics warnings="0"/>
+ </job>
+ <job>
+  <stm:metadataList>
+   <stm:metadata name="dc:date" content="2022-12-23T11:32:30+00:00"/>
+   <stm:metadata name="cmlm:insilico" content="Molpro"/>
+  </stm:metadataList>
+  <platform pid="621">
+   <version major="2022" minor="4" SHA="7e44cf2f6be76d642bd6abc86082413581aa3b85"
+     integer_bits="64" parallelism="mpp">
+    2022.4
+    <date year="2022" month="12" day="23" hour="11" minute="32" second="30">
+     2022-12-23T11:32:30
+    </date>
+   </version>
+   <licence id="cardiff"/>
+   <parallel processes="3" nodes="1" all_processes="3" openmp="1"/>
+   <dimensions natom="400" nvalence="500" nvalence_pno="1000" nbasis="12000" nstate="100"
+     nsymm="16" nrec="512" nprim="2" ncol="100"/>
+  </platform>
+  <jobstep command="FILE" commandset="FILE">
+   <time start="11:32:30" end="11:32:30" cpu="0.1" system="0.03" real="0.14"/>
+   <storage units="megabyte" memory="0.18" sf="0.0" df="121.45" eaf="12.1"/>
+   <summary overall_method="HF/cc-pVDZ"/>
+  </jobstep>
+  <jobstep command="HF-SCF" commandset="SCFPRO">
+   <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+     value="-76.0266940901425"/>
+   <property name="One-electron energy" method="RHF" value="-123.119604630242"/>
+   <property name="Two-electron energy" method="RHF" value="37.9138721720008"/>
+   <property name="Kinetic energy" method="RHF" value="75.9830649905725"/>
+   <property name="Nuclear energy" method="RHF" value="9.17903836809896"/>
+   <property name="Virial quotient" method="RHF" value="-1.00057419504695"/>
+   <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+     stateNumber="1" value="0.0 0.489538964920655E-14 0.815809721324162"/>
+   <time start="11:32:30" end="11:32:30" cpu="0.07" system="0.04" real="0.12"/>
+   <storage units="megabyte" memory="244.14" sf="0.0" df="122.98" eaf="12.16" ga="0.0"/>
+   <summary overall_method="HF/cc-pVDZ"/>
+  </jobstep>
+  <input>
+   <p>***,</p>
+   <p>file,2,h2o2.wfu</p>
+   <p>symmetry,x</p>
+   <p>hf</p>
+   <p>ii=ii+1,pointgroup(ii)=pgroup,e(ii)=energy,group(ii)='Cs'</p>
+  </input>
+  <diagnostics warnings="0"/>
+ </job>
+ <job>

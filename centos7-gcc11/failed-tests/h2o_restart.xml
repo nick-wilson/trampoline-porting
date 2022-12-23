@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<molpro xmlns="http://www.molpro.net/schema/molpro-output"
+  xmlns:xsd="http://www.w3.org/1999/XMLSchema"
+  xmlns:cml="http://www.xml-cml.org/schema"
+  xmlns:stm="http://www.xml-cml.org/schema"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+ <job>
+  <stm:metadataList>
+   <stm:metadata name="dc:date" content="2022-12-23T11:32:28+00:00"/>
+   <stm:metadata name="dc:title" content="restart testjob"/>
+   <stm:metadata name="cmlm:insilico" content="Molpro"/>
+  </stm:metadataList>
+  <platform pid="525">
+   <version major="2022" minor="4" SHA="7e44cf2f6be76d642bd6abc86082413581aa3b85"
+     integer_bits="64" parallelism="mpp">
+    2022.4
+    <date year="2022" month="12" day="23" hour="11" minute="32" second="28">
+     2022-12-23T11:32:28
+    </date>
+   </version>
+   <licence id="cardiff"/>
+   <parallel processes="3" nodes="1" all_processes="3" openmp="1"/>
+   <dimensions natom="400" nvalence="500" nvalence_pno="1000" nbasis="12000" nstate="100"
+     nsymm="16" nrec="512" nprim="2" ncol="100"/>
+  </platform>
+  <jobstep command="FILE" commandset="FILE">
+   <time start="11:32:28" end="11:32:28" cpu="0.11" system="0.01" real="0.12"/>
+   <storage units="megabyte" memory="0.17" sf="0.0" df="0.3" eaf="0.0"/>
+   <summary overall_method="FILE/cc-pVDZ"/>
+  </jobstep>
+  <jobstep command="HF-SCF" commandset="SCFPRO">
+   <cml:molecule>
+    <cml:symmetry pointGroup="C2v">
+     <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+     </cml:transform3>
+     <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+     </cml:transform3>
+    </cml:symmetry>
+    <cml:atomArray>
+     <cml:atom id="a1" elementType="H" x3="0.0" y3="-0.810746523674885" z3="0.604172989020228"/>
+     <cml:atom id="a2" elementType="O" x3="0.0" y3="0.0" z3="-0.761241199736301E-01"/>
+     <cml:atom id="a3" elementType="H" x3="0.0" y3="0.810746523674885" z3="0.604172989020228"/>
+    </cml:atomArray>
+    <cml:bondArray>
+     <cml:bond atomRefs2="a1 a3"/>
+     <cml:bond atomRefs2="a2 a3"/>
+    </cml:bondArray>
+   </cml:molecule>
+   <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+     value="-76.0056904990534"/>
+   <property name="One-electron energy" method="RHF" value="-121.556334945792"/>
+   <property name="Two-electron energy" method="RHF" value="37.2242926244053"/>
+   <property name="Kinetic energy" method="RHF" value="75.6689111664113"/>
+   <property name="Nuclear energy" method="RHF" value="8.32635182233307"/>
+   <property name="Virial quotient" method="RHF" value="-1.00445069616373"/>
+   <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+     stateNumber="1" value="0.0 0.0 0.870149100343629"/>
+   <time start="11:32:28" end="11:32:28" cpu="0.12" system="0.07" real="0.2"/>
+   <storage units="megabyte" memory="244.14" sf="0.0" df="121.42" eaf="12.1" ga="0.0"/>
+   <summary overall_method="HF/cc-pVDZ"/>
+  </jobstep>
+  <jobstep command="MP2" commandset="CCSD">
+   <property name="energy" method="Reference" stateSymmetry="1" stateNumber="1"
+     value="-76.0056904990534"/>
+   <single orbital="2.1" energy="0.0"/>
+   <single orbital="-2.1" energy="0.0"/>
+   <single orbital="3.1" energy="0.0"/>
+   <single orbital="-3.1" energy="0.0"/>
+   <single orbital="1.2" energy="0.0"/>
+   <single orbital="-1.2" energy="0.0"/>
+   <single orbital="1.3" energy="0.0"/>
+   <single orbital="-1.3" energy="0.0"/>
+   <pair orbital1="2.1" orbital2="-2.1" energy="-0.0046041"/>
+   <pair orbital1="-2.1" orbital2="2.1" energy="-0.0046041"/>
+   <pair orbital1="3.1" orbital2="2.1" energy="-0.0020017"/>
+   <pair orbital1="-3.1" orbital2="-2.1" energy="-0.0020017"/>
+   <pair orbital1="3.1" orbital2="-2.1" energy="-0.00601124"/>
+   <pair orbital1="-3.1" orbital2="2.1" energy="-0.00601124"/>
+   <pair orbital1="3.1" orbital2="-3.1" energy="-0.00915708"/>
+   <pair orbital1="-3.1" orbital2="3.1" energy="-0.00915708"/>
+   <pair orbital1="1.2" orbital2="-1.2" energy="-0.00840532"/>
+   <pair orbital1="-1.2" orbital2="1.2" energy="-0.00840532"/>
+   <pair orbital1="1.3" orbital2="-1.3" energy="-0.01055721"/>
+   <pair orbital1="-1.3" orbital2="1.3" energy="-0.01055721"/>
+   <pair orbital1="1.2" orbital2="2.1" energy="-0.00197374"/>
+   <pair orbital1="-1.2" orbital2="-2.1" energy="-0.00197374"/>
+   <pair orbital1="1.2" orbital2="-2.1" energy="-0.00577192"/>
+   <pair orbital1="-1.2" orbital2="2.1" energy="-0.00577192"/>
+   <pair orbital1="1.2" orbital2="3.1" energy="-0.00670519"/>
+   <pair orbital1="-1.2" orbital2="-3.1" energy="-0.00670519"/>
+   <pair orbital1="1.2" orbital2="-3.1" energy="-0.00826353"/>
+   <pair orbital1="-1.2" orbital2="3.1" energy="-0.00826353"/>
+   <pair orbital1="1.3" orbital2="2.1" energy="-0.0021678"/>
+   <pair orbital1="-1.3" orbital2="-2.1" energy="-0.0021678"/>
+   <pair orbital1="1.3" orbital2="-2.1" energy="-0.00709673"/>
+   <pair orbital1="-1.3" orbital2="2.1" energy="-0.00709673"/>
+   <pair orbital1="1.3" orbital2="3.1" energy="-0.00652774"/>
+   <pair orbital1="-1.3" orbital2="-3.1" energy="-0.00652774"/>
+   <pair orbital1="1.3" orbital2="-3.1" energy="-0.0110594"/>
+   <pair orbital1="-1.3" orbital2="3.1" energy="-0.0110594"/>
+   <pair orbital1="1.3" orbital2="1.2" energy="-0.00664482"/>
+   <pair orbital1="-1.3" orbital2="-1.2" energy="-0.00664482"/>
+   <pair orbital1="1.3" orbital2="-1.2" energy="-0.00785443"/>
+   <pair orbital1="-1.3" orbital2="1.2" energy="-0.00785443"/>
+   <property name="singlet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+     value="-0.131540895229068"/>
+   <property name="triplet pair energy" method="MP2" stateSymmetry="1" stateNumber="1"
+     value="-0.780629841566785E-01"/>
+   <property name="correlation energy" method="MP2" stateSymmetry="1" stateNumber="1"
+     value="-0.209603879385747"/>
+   <property name="total energy" method="MP2" principal="true" stateSymmetry="1"
+     stateNumber="1" value="-76.2152943784392"/>
+   <time start="11:32:28" end="11:32:28" cpu="0.02" system="0.01" real="0.03"/>
+   <storage units="megabyte" memory="243.88" sf="0.06" df="121.45" eaf="12.1" ga="0.0"/>
+   <summary overall_method="MP2/cc-pVDZ"/>
+  </jobstep>
+  <jobstep command="CCSD(T)" commandset="CCSD">
+   <property name="energy" method="Reference" stateSymmetry="1" stateNumber="1"
+     value="-76.0056904990534"/>
+   <single orbital="2.1" energy="0.0"/>
+   <single orbital="-2.1" energy="0.0"/>
+   <single orbital="3.1" energy="-0.00000014"/>
+   <single orbital="-3.1" energy="-0.00000014"/>
+   <single orbital="1.2" energy="-0.00000002"/>
+   <single orbital="-1.2" energy="-0.00000002"/>
+   <single orbital="1.3" energy="0.00000006"/>
+   <single orbital="-1.3" energy="0.00000006"/>
+   <pair orbital1="2.1" orbital2="-2.1" energy="-0.00515268"/>
+   <pair orbital1="-2.1" orbital2="2.1" energy="-0.00515268"/>
+   <pair orbital1="3.1" orbital2="2.1" energy="-0.0017023"/>
+   <pair orbital1="-3.1" orbital2="-2.1" energy="-0.0017023"/>
+   <pair orbital1="3.1" orbital2="-2.1" energy="-0.00701729"/>
+   <pair orbital1="-3.1" orbital2="2.1" energy="-0.00701729"/>
+   <pair orbital1="3.1" orbital2="-3.1" energy="-0.01023916"/>
+   <pair orbital1="-3.1" orbital2="3.1" energy="-0.01023916"/>
+   <pair orbital1="1.2" orbital2="-1.2" energy="-0.00926385"/>
+   <pair orbital1="-1.2" orbital2="1.2" energy="-0.00926385"/>
+   <pair orbital1="1.3" orbital2="-1.3" energy="-0.01198776"/>
+   <pair orbital1="-1.3" orbital2="1.3" energy="-0.01198776"/>
+   <pair orbital1="1.2" orbital2="2.1" energy="-0.00166535"/>
+   <pair orbital1="-1.2" orbital2="-2.1" energy="-0.00166535"/>
+   <pair orbital1="1.2" orbital2="-2.1" energy="-0.00657547"/>
+   <pair orbital1="-1.2" orbital2="2.1" energy="-0.00657547"/>
+   <pair orbital1="1.2" orbital2="3.1" energy="-0.00601433"/>
+   <pair orbital1="-1.2" orbital2="-3.1" energy="-0.00601433"/>
+   <pair orbital1="1.2" orbital2="-3.1" energy="-0.00839027"/>
+   <pair orbital1="-1.2" orbital2="3.1" energy="-0.00839027"/>
+   <pair orbital1="1.3" orbital2="2.1" energy="-0.0017664"/>
+   <pair orbital1="-1.3" orbital2="-2.1" energy="-0.0017664"/>
+   <pair orbital1="1.3" orbital2="-2.1" energy="-0.00834104"/>
+   <pair orbital1="-1.3" orbital2="2.1" energy="-0.00834104"/>
+   <pair orbital1="1.3" orbital2="3.1" energy="-0.00562652"/>
+   <pair orbital1="-1.3" orbital2="-3.1" energy="-0.00562652"/>
+   <pair orbital1="1.3" orbital2="-3.1" energy="-0.01211154"/>
+   <pair orbital1="-1.3" orbital2="3.1" energy="-0.01211154"/>
+   <pair orbital1="1.3" orbital2="1.2" energy="-0.00588029"/>
+   <pair orbital1="-1.3" orbital2="-1.2" energy="-0.00588029"/>
+   <pair orbital1="1.3" orbital2="-1.2" energy="-0.00786991"/>
+   <pair orbital1="-1.3" orbital2="1.2" energy="-0.00786991"/>
+   <property name="singlet pair energy" method="CCSD" stateSymmetry="1" stateNumber="1"
+     value="-0.151242736896136"/>
+   <property name="triplet pair energy" method="CCSD" stateSymmetry="1" stateNumber="1"
+     value="-0.679655332867057E-01"/>
+   <property name="correlation energy" method="CCSD" stateSymmetry="1" stateNumber="1"
+     value="-0.219208458879735"/>
+   <property name="contribution" method="Triples (T)" stateSymmetry="1" stateNumber="1"
+     value="-0.363407263694441E-02"/>
+   <property name="correlation energy" method="Total" stateSymmetry="1" stateNumber="1"
+     value="-0.222842531516679"/>
+   <property name="total energy" method="CCSD" stateSymmetry="1" stateNumber="1"
+     value="-76.2248989579332"/>
+   <property name="energy" method="CCSD[T]" stateSymmetry="1" stateNumber="1"
+     value="-76.2286574770702"/>
+   <property name="energy" method="CCSD-T" stateSymmetry="1" stateNumber="1"
+     value="-76.2284559696654"/>
+   <property name="total energy" method="CCSD(T)" principal="true" stateSymmetry="1"
+     stateNumber="1" value="-76.2285330305701"/>
+   <time start="11:32:28" end="11:32:28" cpu="0.04" system="0.01" real="0.05"/>
+   <storage units="megabyte" memory="243.88" sf="0.14" df="121.63" eaf="12.1" ga="0.0"/>
+   <summary overall_method="CCSD(T)/cc-pVDZ"/>
+  </jobstep>
+  <input>
+   <p>***,restart testjob</p>
+   <p>file,1,h2o.int,new</p>
+   <p>file,2,h2o.wfu,new</p>
+   <p>geometry={</p>
+   <p>          H1</p>
+   <p>          O,H1,2;</p>
+   <p>          H2,O,2,H1,100}</p>
+   <p>hf</p>
+   <p>e(1)=energy</p>
+   <p>method(1)='hf'</p>
+   <p>mp2</p>
+   <p>e(2)=energy</p>
+   <p>method(2)='mp2'</p>
+   <p>ccsd(t)</p>
+   <p>e(3)=energy</p>
+   <p>method(3)='ccsd(t)'</p>
+  </input>
+  <diagnostics warnings="0"/>
+ </job>
+ <job>
+  <stm:metadataList>
+   <stm:metadata name="dc:date" content="2022-12-23T11:32:28+00:00"/>
+   <stm:metadata name="dc:title" content="restart testjob"/>
+   <stm:metadata name="cmlm:insilico" content="Molpro"/>
+  </stm:metadataList>
+  <platform pid="525">
+   <version major="2022" minor="4" SHA="7e44cf2f6be76d642bd6abc86082413581aa3b85"
+     integer_bits="64" parallelism="mpp">
+    2022.4
+    <date year="2022" month="12" day="23" hour="11" minute="32" second="28">
+     2022-12-23T11:32:28
+    </date>
+   </version>
+   <licence id="cardiff"/>
+   <parallel processes="3" nodes="1" all_processes="3" openmp="1"/>
+   <dimensions natom="400" nvalence="500" nvalence_pno="1000" nbasis="12000" nstate="100"
+     nsymm="16" nrec="512" nprim="2" ncol="100"/>
+  </platform>
+  <jobstep command="CI" commandset="CIPRO">
+   <error type="Error" location="binput:msomat" message="Compression error"/>
+  </jobstep>
+  <input>
+   <p>***,restart testjob</p>
+   <p>ci</p>
+   <p>e(4)=energy</p>
+   <p>method(4)='ci (restart,2)'</p>
+  </input>
+  <diagnostics warnings="0"/>
+ </job>
+</molpro>

@@ -1,0 +1,11 @@
+#27 9.949 Running job h2o_restart.test
+#27 11.32 '/tmp/molpro.81Qdgv4G7G/h2o.wfu' -> '/root/wfu//h2o.wfu.failed'
+#27 11.34 [0] Received an Error in Communication: (1) 0:fehler on processor   0                                         :
+#27 11.34 Abort(1) on node 0 (rank 0 in comm 496): application called MPI_Abort(comm=0x84000003, 1) - process 0
+#27 11.34 [1] Received an Error in Communication: (1) 1:fehler on processor   1                                         :
+#27 11.34 Abort(1) on node 1 (rank 1 in comm 496): application called MPI_Abort(comm=0x84000002, 1) - process 1
+#27 11.34 [2] Received an Error in Communication: (1) 2:fehler on processor   2                                         :
+#27 11.34 Abort(1) on node 2 (rank 2 in comm 496): application called MPI_Abort(comm=0x84000002, 1) - process 2
+#27 11.35 **** PROBLEMS WITH JOB h2o_restart.test
+#27 11.35 h2o_restart.test: ERRORS DETECTED: non-zero return code ... inspect output
+

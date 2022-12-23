@@ -1,0 +1,65 @@
+***,Test for matrop
+
+geomtyp=xyz
+
+orient,mass
+geometry={
+   2
+N2
+N1,-0.160764952519E+01, 0.531259204459E+00, 0.000000000000E+00
+N2,-0.189235047481E+01,-0.531259204459E+00, 0.000000000000E+00
+}
+
+{hf;wf,14}
+e(1)=energy
+
+{matrop
+load,orb,orbitals,2100.2        !load orbitals
+density,den,orb,3,1,1,0,2       !make closed-shell density
+fock,fao,den                    !make fock operator
+load,hao,h0                     !load one-electron hamiltonian
+add,h1,hao,fao                  !form h1=f+h
+trace,e2,h1,den,0.5             !compute electronic energy, store in variable e2
+tran,fmo,fao,orb                !transform f into the MO basis
+diag,eigvec,eigval,fmo          !diagonalize
+mult,orbnew,orb,eigvec          !transform orbitals
+density,dnew,orbnew,3,1,1,0,2   !form new density
+write,orbnew,orb.matrop,new     !write new orbitals to file orb.matrop
+fock,fnew,dnew                  !make fock operator
+add,h1,hao,fnew                 !add to h
+trace,e3,h1,dnew,0.5}           !new energy
+e(2)=e2+enuc                    !total energies
+e(3)=e3+enuc
+
+{matrop,read,orb,type=orbitals,file=orb.matrop   !read orbitals from file orb.matrop
+save,orb,2101.2}                 !save orbitals in record 2101.2
+
+{hf;start,2101.2;wf, 14;maxit,1} !start hf with orbitals from matrop
+e(4)=energy
+
+***,Test for matrop read
+geomtyp=xyz
+
+orient,mass
+geometry={
+   2
+N2
+N1,-0.160764952519E+01, 0.531259204459E+00, 0.000000000000E+00
+N2,-0.189235047481E+01,-0.531259204459E+00, 0.000000000000E+00
+}
+
+{matrop
+read,orb,orbitals
+include,orb.matrop
+save,orb,2102.2}
+
+{hf,debug=1,gap_min=0;start,2102.2;wf, 14;occ,3,1,1,,2;maxit,1}
+e(1)=energy
+eold=[-108.95379625]
+de=max(abs(e-eold))
+
+if(de.lt.1.d-8) then
+text,No errors for matrop.test
+else
+text,ERRORS detected in matrop.test
+end if

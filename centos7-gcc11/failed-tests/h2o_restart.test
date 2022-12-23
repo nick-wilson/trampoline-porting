@@ -1,0 +1,43 @@
+***,restart testjob
+file,1,h2o.int,new
+file,2,h2o.wfu,new
+geometry={
+          H1
+          O,H1,2;
+          H2,O,2,H1,100}
+hf
+e(1)=energy
+method(1)='hf'
+mp2
+e(2)=energy
+method(2)='mp2'
+ccsd(t)
+e(3)=energy
+method(3)='ccsd(t)'
+***,restart testjob
+file,2,h2o.wfu
+ci
+e(4)=energy
+method(4)='ci (restart,2)'
+***,restart testjob
+file,1,h2o.int
+file,2,h2o.wfu
+ccsd(t)
+e(5)=energy
+method(5)='ccsd(t) (restart,1,2)'
+show,e
+EOLD  = [ -76.00569050   -76.21529442   -76.22853300   -76.21558009   -76.22853300] AU
+
+dele=max(abs(e-eold))
+
+if(dele.gt.1.d-7) then
+table,method,e,e-eold
+save,test.log
+title,Results for job h2o_restart.test
+title,ERRORS DETECTED in h2o_restart.test. Max error for energy=$dele
+else
+table,method,e
+save,test.log
+title,Results for job h2o_restart.test
+title,No errors in h2o_restart.test, max error for energy=$dele
+endif

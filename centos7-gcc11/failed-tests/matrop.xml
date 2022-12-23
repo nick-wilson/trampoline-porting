@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<molpro xmlns="http://www.molpro.net/schema/molpro-output"
+  xmlns:xsd="http://www.w3.org/1999/XMLSchema"
+  xmlns:cml="http://www.xml-cml.org/schema"
+  xmlns:stm="http://www.xml-cml.org/schema"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+ <job>
+  <stm:metadataList>
+   <stm:metadata name="dc:date" content="2022-12-23T11:34:07+00:00"/>
+   <stm:metadata name="dc:title" content="Test for matrop"/>
+   <stm:metadata name="cmlm:insilico" content="Molpro"/>
+  </stm:metadataList>
+  <platform pid="3520">
+   <version major="2022" minor="4" SHA="7e44cf2f6be76d642bd6abc86082413581aa3b85"
+     integer_bits="64" parallelism="mpp">
+    2022.4
+    <date year="2022" month="12" day="23" hour="11" minute="34" second="7">
+     2022-12-23T11:34:07
+    </date>
+   </version>
+   <licence id="cardiff"/>
+   <parallel processes="3" nodes="1" all_processes="3" openmp="1"/>
+   <dimensions natom="400" nvalence="500" nvalence_pno="1000" nbasis="12000" nstate="100"
+     nsymm="16" nrec="512" nprim="2" ncol="100"/>
+  </platform>
+  <jobstep command="HF-SCF" commandset="SCFPRO">
+   <cml:molecule>
+    <cml:symmetry pointGroup="D2h">
+     <cml:transform3 title="generator" id="X">
+      -1  0  0  0  0  1  0  0  0  0  1  0  0  0  0  1
+     </cml:transform3>
+     <cml:transform3 title="generator" id="Y">
+       1  0  0  0  0 -1  0  0  0  0  1  0  0  0  0  1
+     </cml:transform3>
+     <cml:transform3 title="generator" id="Z">
+       1  0  0  0  0  1  0  0  0  0 -1  0  0  0  0  1
+     </cml:transform3>
+    </cml:symmetry>
+    <cml:atomArray>
+     <cml:atom id="a1" elementType="N" x3="0.0" y3="0.0" z3="0.550000000000947"/>
+     <cml:atom id="a2" elementType="N" x3="0.0" y3="0.0" z3="-0.550000000000947"/>
+    </cml:atomArray>
+    <cml:bondArray>
+     <cml:bond atomRefs2="a1 a2"/>
+    </cml:bondArray>
+   </cml:molecule>
+   <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+     value="-108.953796240694"/>
+   <property name="One-electron energy" method="RHF" value="-194.141068871994"/>
+   <property name="Two-electron energy" method="RHF" value="61.6148332365705"/>
+   <property name="Kinetic energy" method="RHF" value="108.699772893759"/>
+   <property name="Nuclear energy" method="RHF" value="23.5724393947294"/>
+   <property name="Virial quotient" method="RHF" value="-1.00233692619748"/>
+   <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+     stateNumber="1" value="0.0 0.0 0.0"/>
+   <time start="11:34:07" end="11:34:07" cpu="0.22" system="0.09" real="0.31"/>
+   <storage units="megabyte" memory="244.14" sf="0.0" df="86.98" eaf="12.13" ga="0.0"/>
+   <summary overall_method="HF/cc-pVDZ"/>
+  </jobstep>
+  <jobstep command="MATROP" commandset="SCFPRO">
+   <time start="11:34:07" end="11:34:07" cpu="0.0" system="0.0" real="0.0"/>
+   <storage units="megabyte" memory="0.28" sf="0.0" df="86.98" eaf="12.13" ga="0.0"/>
+   <summary overall_method="MATROP/cc-pVDZ"/>
+  </jobstep>
+  <jobstep command="MATROP" commandset="SCFPRO">
+   <time start="11:34:07" end="11:34:07" cpu="0.01" system="0.0" real="0.01"/>
+   <storage units="megabyte" memory="0.18" sf="0.0" df="87.24" eaf="12.13" ga="0.0"/>
+   <summary overall_method="MATROP/cc-pVDZ"/>
+  </jobstep>
+  <jobstep command="HF-SCF" commandset="SCFPRO">
+   <property name="Energy" method="RHF" principal="true" stateSymmetry="1" stateNumber="1"
+     value="-108.163146022538"/>
+   <property name="One-electron energy" method="RHF" value="-192.296089240217"/>
+   <property name="Two-electron energy" method="RHF" value="60.5605038229502"/>
+   <property name="Kinetic energy" method="RHF" value="108.192268617136"/>
+   <property name="Nuclear energy" method="RHF" value="23.5724393947294"/>
+   <property name="Virial quotient" method="RHF" value="-0.999730825548159"/>
+   <property name="Dipole moment" method="RHF" principal="true" stateSymmetry="1"
+     stateNumber="1" value="0.0 0.0 0.0"/>
+   <time start="11:34:07" end="11:34:07" cpu="0.0" system="0.0" real="0.0"/>
+   <storage units="megabyte" memory="0.28" sf="0.0" df="87.25" eaf="12.13" ga="0.0"/>
+   <summary overall_method="HF/cc-pVDZ"/>
+  </jobstep>
+  <input>
+   <p>***,Test for matrop</p>
+   <p>geomtyp=xyz</p>
+   <p>orient,mass</p>
+   <p>geometry={</p>
+   <p>   2</p>
+   <p>N2</p>
+   <p>N1,-0.160764952519E+01, 0.531259204459E+00, 0.000000000000E+00</p>
+   <p>N2,-0.189235047481E+01,-0.531259204459E+00, 0.000000000000E+00</p>
+   <p>}</p>
+   <p>{hf;wf,14}</p>
+   <p>e(1)=energy</p>
+   <p>{matrop</p>
+   <p>load,orb,orbitals,2100.2        !load orbitals</p>
+   <p>density,den,orb,3,1,1,0,2       !make closed-shell density</p>
+   <p>fock,fao,den                    !make fock operator</p>
+   <p>load,hao,h0                     !load one-electron hamiltonian</p>
+   <p>add,h1,hao,fao                  !form h1=f+h</p>
+   <p>trace,e2,h1,den,0.5             !compute electronic energy, store in variable e2</p>
+   <p>tran,fmo,fao,orb                !transform f into the MO basis</p>
+   <p>diag,eigvec,eigval,fmo          !diagonalize</p>
+   <p>mult,orbnew,orb,eigvec          !transform orbitals</p>
+   <p>density,dnew,orbnew,3,1,1,0,2   !form new density</p>
+   <p>write,orbnew,orb.matrop,new     !write new orbitals to file orb.matrop</p>
+   <p>fock,fnew,dnew                  !make fock operator</p>
+   <p>add,h1,hao,fnew                 !add to h</p>
+   <p>trace,e3,h1,dnew,0.5}           !new energy</p>
+   <p>e(2)=e2+enuc                    !total energies</p>
+   <p>e(3)=e3+enuc</p>
+   <p>{matrop,read,orb,type=orbitals,file=orb.matrop   !read orbitals from file orb.matrop</p>
+   <p>save,orb,2101.2}                 !save orbitals in record 2101.2</p>
+   <p>{hf;start,2101.2;wf, 14;maxit,1} !start hf with orbitals from matrop</p>
+   <p>e(4)=energy</p>
+  </input>
+  <diagnostics warnings="0"/>
+ </job>
+ <job>

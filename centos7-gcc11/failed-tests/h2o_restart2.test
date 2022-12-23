@@ -1,0 +1,61 @@
+***,
+file,2,h2o2.wfu,new
+symmetry,x,y;geometry={
+h
+o,h,r
+h,o,r,h,theta
+}
+r=1.81246829               !optimize mp2/VTZ geometry
+theta=103.49307128
+
+basis=vdz
+
+ii=0
+hf
+ii=ii+1,pointgroup(ii)=pgroup,e(ii)=energy,group(ii)='C2v'
+
+***
+file,2,h2o2.wfu
+symmetry,x
+hf
+ii=ii+1,pointgroup(ii)=pgroup,e(ii)=energy,group(ii)='Cs'
+***
+file,2,h2o2.wfu
+symmetry,x,y;geometry={
+h
+o,h,r
+h,o,r,h,theta
+}
+hf
+ii=ii+1,pointgroup(ii)=pgroup,e(ii)=energy,group(ii)='C2v'
+
+***
+file,2,h2o2.wfu
+symmetry,x
+geometry={
+h
+o,h,r
+h,o,r,h,theta
+}
+hf
+ii=ii+1,pointgroup(ii)=pgroup,e(ii)=energy,group(ii)='Cs'
+ierr=0
+
+nogprint,variable
+do i=1,ii
+if(pointgroup(i).ne.group(i)) ierr=ierr+1
+enddo
+EOLD  = 4[-76.02669409]
+dele=max(abs(e-eold))
+
+if(dele.gt.1.d-7.or.ierr.ne.0) then
+table,pointgroup,group,e,e-eold
+save,test.log
+title,Results for job h2o_restart2.test
+title,ERRORS DETECTED in h2o_restart2.test. Max error for energy=$dele, ierr=$ierr
+else
+table,pointgroup,e
+save,test.log
+title,Results for job h2o_restart2.test
+title,No errors in h2o_restart2.test, max error for energy=$dele
+endif
